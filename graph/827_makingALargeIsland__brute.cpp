@@ -1,4 +1,8 @@
 #include <bits/stdc++.h>
+
+
+// this is o(n^4) but we can solve this using o(n^2) if we first dfs the cell having 1 and we store the group now if and 0 is converted we just have to just add.
+
 using namespace std;
 vector<vector<int>> direction = {{-1,0},{1,0},{0,-1},{0,1}};
 int n;
