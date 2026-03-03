@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-int swimRising(vector<vector<int>>&grid){
+int swimInWater(vector<vector<int>>&grid){
     int n = grid.size();
     priority_queue<pair< int,pair<int,int>>, vector<pair<int,pair<int,int>>>, greater<pair<int, pair<int,int>>>>pq;
     vector<vector<bool>>vis(n,vector<bool>(n,false));
@@ -37,7 +37,7 @@ int main (){
 vector<vector<int>>grid = {
     {0,1},{2,3}
 };
-int a = swimRising(grid);
+int a = swimInWater(grid);
 cout << a << endl;
 
     return 0;
