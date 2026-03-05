@@ -17,26 +17,38 @@ node *build(vector<int>&arr,int &x){
     curr ->right = build(arr,x);
     return curr;
 }
-int maxWidth(node *root){
+long long maxWidth(node *root){
 if(root == NULL)return 0;
 queue<pair<node*,long long>>q;
-q.push({root,1});
-int ans =0;
-while(!q.empty()){
-int a = q.size();
-q.pop();
-ans = max(ans,a);
-q.push()
+q.push({root,0});
+   long long ans =0;
 
+while(!q.empty())
+{
+long long start = q.front().second;
+long long end = q.back().second;
+ans = max(ans,end -start +1);
+int size = q.size();
+for(int i =0;i<size;i++){
+    auto p = q.front();
+    q.pop();
+    node * curr = p.first;
+    long long idx = p.second - start;
+    if(curr ->left)q.push({curr->left,2*idx+1});
+    if(curr->right)q.push({curr->right,2*idx+2});
+}
+}
+return ans;
 
 
 }
 
-}
+
 
 int main (){
-    vector<int> arr = {1,2,3,4};
+vector<int> arr = {1,3,5,-1,-1,3,-1,-1,2,-1,9,-1,-1};
     int x = -1;
 node *root = build(arr,x);
+cout << maxWidth(root) << endl;
     return 0;
 }
