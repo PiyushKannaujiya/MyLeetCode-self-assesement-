@@ -33,7 +33,7 @@ for(auto &p: q){
 
 }
 int main(){
-vector<int> arr = {1,2,3,4,5,-1,9,-1,-1,-1,-1};
+vector<int> arr = {1, 2, 4, -1, -1, 5, -1, -1, 3, -1, 9, -1, -1};
 int x = -1;
 node *root = build(arr,x);
 postOrder(root);

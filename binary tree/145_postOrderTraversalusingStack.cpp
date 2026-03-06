@@ -18,23 +18,33 @@ node *build(vector<int>&arr,int &x){
     curr->right = build(arr,x);
     return curr;
 }
-void post(node* root ,vector<int>&q){
-    if(root == NULL)return;
-    post(root -> left,q);
-    post(root->right,q);
-    q.push_back(root ->data);   
+
+void postOrder(node*root){
+if(root == NULL)return;
+stack <node *>st;
+st.push(root);
+   vector<int>v;
+while(!st.empty()){
+   node *curr = st.top();
+   st.pop();
+   if(curr ->right) st.push(curr ->right);
+   if(curr ->left) st.push(curr ->left);
+   
+
+
+
+
+v.push_back(curr->data);
+
 }
-void postOrder(node *root){
-vector<int>q;
-post(root,q);
-for(auto &p: q){
-     cout <<  p<< " ";
+for(int i =v.size()-1;i>=0;i--){
+    cout << v[i]<< " ";
 }
 
 }
-int main(){
-vector<int> arr = {1,2,3,4,5,-1,9,-1,-1,-1,-1};
-int x = -1;
+int main (){
+    vector<int>arr = {1,2,4,-1,-1,5,-1,-1,3,-1,-1};
+    int x =-1;
 node *root = build(arr,x);
 postOrder(root);
     return 0;
