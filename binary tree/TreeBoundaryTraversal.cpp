@@ -24,7 +24,7 @@ node *build(vector<int>&arr,int &x){
 void leftside(node* root, vector<int>& res){
     if(root == NULL)return ;
 
-    node* curr = root;
+    node* curr = root->left;
 
     while(curr){
 if(!(curr ->left == NULL && curr ->right == NULL)){
