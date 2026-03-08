@@ -21,7 +21,7 @@ bool child(node *root){
 if(root == NULL) return true;
 
 if(root ->left == NULL &&  root ->right == NULL) return true;
-int  l ,r =0;
+int  l =0,r =0;
 if(root ->left)
  l = root ->left->data;
 
