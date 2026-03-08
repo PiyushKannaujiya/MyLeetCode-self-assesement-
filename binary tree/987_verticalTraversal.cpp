@@ -22,6 +22,7 @@ node*build(vector<int>&arr , int &x){
 vector<vector<int>>res;
 vector<vector<int>> vertical(node *root){
     if(root == NULL)return {{}};
+   map<int,map<int,vector<int>>>mp;
    
 
 
