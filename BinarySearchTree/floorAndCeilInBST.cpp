@@ -10,28 +10,44 @@ class node {
         left = right =  NULL;
     }
 };
-node*build(vector<int>&arr , int &x){
+node*build(vector<int>&arr , int &y){
 
-    x++;
-    if(x>=arr.size() || arr[x] == NULL) return NULL;
-    node *currnode = new node(arr[x]);
-    currnode ->left = build(arr,x);
-    currnode ->right = build(arr,x);
+    y++;
+    if(y>=arr.size() || arr[y] == NULL) return NULL;
+    node *currnode = new node(arr[y]);
+    currnode ->left = build(arr,y);
+    currnode ->right = build(arr,y);
     return currnode;
 }
-int floor(node *root,int x){
- if (root ==    NULL) return -1;
-  
-}    
+int floor(node *root,int x, int cf){
+ if (root ==    NULL) return cf;
+   if(root->data == x)return x;
+   if(root ->data > x){
+   
+    return floor(root ->left,x,cf);
+   }
+   if(root -> data <=x && root ->data > cf){
+    cf= root->data;
+    return floor( root ->left,x,cf);
+   }
+}   
+
+// int ceil(node *root, int x){
+
+// }
 
 
 
 int main(){
       vector<int>arr = {8,4,2,-1,-1,6,-1,-1,12,10,-1,-1,14,-1,-1}; 
-    int x =-1;
-    node *root = build(arr,x);
-    int flot = 5;
- int flo = floor(root,flot);
-
+    int y =-1;
+    node *root = build(arr,y);
+    int x = 5;
+    int cf = INT_MIN;
+ int flo = floor(root,x,cf);
+ if(flo == INT_MIN){
+    flo = -1;
+ }
+cout << flo<< endl;
     return 0;
 }
