@@ -32,9 +32,7 @@ int floor(node *root,int x, int cf){
    }
 }   
 
-// int ceil(node *root, int x){
 
-// }
 
 
 
