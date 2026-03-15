@@ -48,6 +48,10 @@ return cff;
 
 
 
+/// main funtion
+
+
+
 int main(){
       vector<int>arr = {8,4,2,-1,-1,6,-1,-1,12,10,-1,-1,14,-1,-1}; 
     int y =-1;
