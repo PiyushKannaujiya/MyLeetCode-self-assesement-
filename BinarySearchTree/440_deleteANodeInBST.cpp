@@ -10,37 +10,44 @@ class node {
         left = right =  NULL;
     }
 };
-node*build(vector<int>&arr , int &y){
 
-    y++;
-    if(y>=arr.size() || arr[y] == -1) return NULL;
-    node *currnode = new node(arr[y]);
-    currnode ->left = build(arr,y);
-    currnode ->right = build(arr,y);
-    return currnode;
+node *insert(node *root, int i){
+ if(root == NULL){
+   return new node(i);
+ 
+ }
+  if(root ->data > i){
+    root ->left = insert(root ->left ,i);
+  }
+  else 
+  root ->right = insert(root ->right ,i);
+
+  return root;
 }
-int findmin(node *root){
-    node *curr = root ->right;
-    while(curr ->left != NULL){
-        curr = curr ->left;
-        if(curr ->left == NULL){
-            if(curr ->right) return curr ->right ->data;
-        }
-    }
-    return curr ->data;
+
+node*build(vector<int>&arr ){
+    node *root =   NULL;
+
+for(int i =0;i<arr.size();i++){
+   root = insert(root ,arr[i]);
 }
-void del(node *root ){
-    if(root ==NULL)return ;
+return root;
+}
+void print(node *root){
+    if(root == NULL) return ;
+ cout << root ->data << " ";
+ print(root ->left);
+ print(root ->right);
 
 }
+
 
 
 
 int main(){
-      vector<int>arr = {8,4,2,-1,-1,6,-1,-1,12,10,5,-1,-1,14,-1,-1}; 
-    int y =-1;
-    node *root = build(arr,y);
- del(root);
+      vector<int>arr = {8,15,1,7,-1,122}; 
+ node *root = build(arr);
+print(root);
 
 
     return 0;
