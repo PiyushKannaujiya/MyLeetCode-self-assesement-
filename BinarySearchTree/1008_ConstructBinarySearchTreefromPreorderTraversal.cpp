@@ -1,39 +1,58 @@
 #include <bits/stdc++.h>
 using namespace std;
+
 class node {
-    public:
+public:
     int data;
     node *left;
     node *right;
+
     node(int val){
-        this ->data = val;
-        left = right =  NULL;
+        data = val;
+        left = right = NULL;
     }
 };
- 
-node *final(node *root){
-     if(root ==  NULL) return NULL;
-     
+
+//////////////////// BUILD BST FROM PREORDER ////////////////////
+node* build(vector<int>& pre, int &i, long long minv, long long maxv){
+    if(i >= pre.size()) return NULL;
+
+    // if current value not in range → cannot be placed here
+    if(pre[i] <= minv || pre[i] >= maxv)
+        return NULL;
+
+    node* root = new node(pre[i]);
+    i++;
+
+    root->left = build(pre, i, minv, root->data);
+    root->right = build(pre, i, root->data, maxv);
+
+    return root;
 }
-node *bst(vector<int>&arr){
-    if(arr.size() == 0 ) return NULL;
-node *root;
- for(int i =0;i<arr.size();i++){
-  root = new node (arr[i]);
- }
 
-final(root);
-
+node* bstFromPreorder(vector<int>& pre){
+    int i = 0;
+    return build(pre, i, LLONG_MIN, LLONG_MAX);
 }
 
+//////////////////// INORDER (CHECK) ////////////////////
+void inorder(node* root){
+    if(root == NULL) return;
 
+    inorder(root->left);
+    cout << root->data << " ";
+    inorder(root->right);
+}
 
+//////////////////// MAIN ////////////////////
 int main(){
-      vector<int>arr = {8,5,1,7,10,12}; 
-    int y =-1;
-    node *root = bst(arr);
+    vector<int> pre = {8,5,1,7,10,12};
 
+    node* root = bstFromPreorder(pre);
 
+    cout << "Inorder: ";
+    inorder(root);   // should be sorted
+    cout << endl;
 
     return 0;
 }
