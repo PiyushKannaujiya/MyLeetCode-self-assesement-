@@ -10,6 +10,7 @@ class node {
         left = right =  NULL;
     }
 };
+// build tree
 node*build(vector<int>&arr , int &y){
 
     y++;
