@@ -1,7 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 int ans(vector<int> arr){
- if(arr.size() == 0) return -1;
+ if(arr.size() == 0) return -1;// binary search 
 int l =0, r = arr.size()-1;
 while (l<r){
     int mid = l+ (r-l)/2;
