@@ -1,7 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
 
-// Node structure
 struct Node {
     int data;
     Node* next;
@@ -12,14 +11,12 @@ struct Node {
     }
 };
 
-// Min heap comparator
 struct compare {
     bool operator()(Node* a, Node* b) {
         return a->data > b->data;   // min heap
     }
 };
 
-// Merge K Lists function
 Node* mergeKLists(vector<Node*>& lists) {
 
     priority_queue<Node*, vector<Node*>, compare> pq;
