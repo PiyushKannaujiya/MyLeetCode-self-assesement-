@@ -40,6 +40,7 @@ else {
  return time;
 }
 
+// main fun
 
 int main(){
 vector<string>task = {"A","A","A","B","B","B"} ;
