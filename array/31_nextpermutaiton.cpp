@@ -18,6 +18,7 @@ vector<int> nextper(vector<int> & arr){
         }
     }
     }
+// reverse
 
     reverse(arr.begin() + greateridx+1, arr.end());
     
