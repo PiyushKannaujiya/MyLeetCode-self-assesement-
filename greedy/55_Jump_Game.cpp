@@ -4,16 +4,17 @@ bool canJump(vector<int>& nums){
    int reach =0;
 
          for(int i =0;i<nums.size();i++){
-
+ if(i>reach) return false;
         int a = nums[i];
-        
+
         for(int j=1;j<=a;j++)
      {
-         i = j+ i;
-        if(i == nums.size()-1){
+      reach = max(reach, i+j) ;
+   }
+        if( reach >= nums.size()-1){
             return true;
-            break;}
-        }
+          }
+        
      }
      return false;
 } 
